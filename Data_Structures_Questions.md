@@ -13,11 +13,16 @@ Answer the following questions for each of the data structures you implemented a
 
 ## Binary Search Tree
 
+essentially it would become a single-linked list for worst case
+
 1. What is the runtime complexity of `insert`?
+   average: O(log n), worst case: O(n)
 
 2. What is the runtime complexity of `contains`?
+   average: O(log n), worst case: O(n)
 
 3. What is the runtime complexity of `get_max`?
+   average: O(log n), worst case: O(n)
 
 ## Heap
 
