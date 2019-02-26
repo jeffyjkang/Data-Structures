@@ -10,72 +10,101 @@ class BinarySearchTree:
     # if the new node is less than the value insert to left node
     # if the new node is greater than the value insert to right node
     def insert(self, value):
-        # check to see if we have anything in our BST
-        new_node = Node(value)
-        if self.value == None:
-            self.value = new_node
-            print(self.value)
-        # if we have a root value invoke the private recursive function
+        if self.value:
+            if value < self.value:
+                if self.left == None:
+                    self.left = BinarySearchTree(value)
+                else:
+                    self.left.insert(value)
+            if value > self.value:
+                if self.right == None:
+                    self.right = BinarySearchTree(value)
+                else:
+                    self.right.insert(value)
         else:
-            self._insert(value, new_node)
+            self.value = value
 
     def contains(self, target):
-        pass
+        print(target)
+        print(self.value)
+        if self.value == None:
+            return False
+        if self.value == target:
+            return True
+        if self.value < target:
+            if self.right == None:
+                return False
+            return self.right.contains(target)
+        if self.value > target:
+            if self.left == None:
+                return False
+            return self.left.contains(target)
 
     def get_max(self):
-        pass
-
-    # create another private recursive function
-    def _insert(self, value, current_node):
-        print(self.value)
-        print(value)
-        # check to see if the value is less than the current node's value
-        if value < current_node.value:
-            # if there is no left child, insert the value in the left node
-            # if current_node.left_child == None:
-            if self.left == None:
-                # current_node.left_child = Node(value)
-                self.left = Node(value)
-            # if there is a left child, recursively call _insert
-            else:
-                # self._insert(value, current_node.left_child)
-                self._insert(value, self.left)
-        # if value is not less than current node's value, move to right side
-        if value > current_node.value:
-            # if there is no right child, insert the value in the right node
-            # if current_node.right_child == None:
-            if self.right == None:
-                # current_node.right_child = Node(value)
-                self.right = Node(value)
-            # if there is a right child, recursively call _insert again but on the right
-            else:
-                # self._insert(value, current_node.right_child)
-                self._insert(value, self.right)
-        # if value is already in tree, error out with a string
-        else:
-            print("value already in BST")
-
-    # def print_tree(self):
-    #     if self.value != None:
-    #         self._print_tree(self.value)
-
-    # def _print_tree(self, current_node):
-    #     if current_node != None:
-    #         # self._print_tree(current_node.left_child)
-    #         self._print_tree(current_node.left)
-    #         print(f"{current_node.value}")
-    #         # self._print_tree(current_node.right_child)
-    #         self._print_tree(current_node.right)
-
-
-class Node:
-    def __init__(self, value=None):
-        self.value = value
-        # self.left_child = None
-        # self.right_child = None
-
-    def get_value(self):
+        while self.right != None:
+            self = self.right
         return self.value
+        # print(self.value)
+        # print(self.right.value)
+
+        # while self.right.value != None:
+        #     self.value = self.right
+        # return self.value
+
+    def print_tree(self):
+        if self.left:
+            self.left.print_tree()
+        print(self.value)
+        if self.right:
+            self.right.print_tree()
+
+#     # create another private recursive function
+#     def _insert(self, value, current_node):
+#         # check to see if the value is less than the current node's value
+#         if value < current_node.value:
+#             # if there is no left child, insert the value in the left node
+#             # if current_node.left_child == None:
+#             if current_node.left == None:
+#                 # current_node.left_child = Node(value)
+#                 current_node.left = Node(value)
+#             # if there is a left child, recursively call _insert
+#             else:
+#                 # self._insert(value, current_node.left_child)
+#                 self._insert(value, current_node.left)
+#         # if value is not less than current node's value, move to right side
+#         if value > current_node.value:
+#             # if there is no right child, insert the value in the right node
+#             # if current_node.right_child == None:
+#             if current_node.right == None:
+#                 # current_node.right_child = Node(value)
+#                 current_node.right= Node(value)
+#             # if there is a right child, recursively call _insert again but on the right
+#             else:
+#                 # self._insert(value, current_node.right_child)
+#                 self._insert(value, current_node.right)
+#         # if value is already in tree, error out with a string
+#         else:
+#             print("value already in BST")
+
+#     def print_tree(self):
+#         if self.value != None:
+#             self._print_tree(self.value)
+
+#     def _print_tree(self, current_node):
+#         if current_node != None:
+#             self._print_tree(current_node.left_child)
+#             print(f"{current_node.value}")
+#             self._print_tree(current_node.right_child)
+
+
+# class Node:
+#     def __init__(self, value=None):
+#         self.value = value
+#         self.left_child = None
+#         self.right_child = None
+
+#     def get_value(self):
+#         return self.value
 
 
 # def fill_tree(tree, elem=10, max_int=100):
@@ -86,12 +115,22 @@ class Node:
 #         return tree
 
 
-tree = BinarySearchTree()
+# tree = BinarySearchTree()
 # tree = fill_tree(tree)
-tree.insert(5)
-tree.insert(6)
-# tree.print_tree()
-print(tree)
+
+root = BinarySearchTree(8)
+root.insert(9)
+root.insert(2)
+root.insert(1)
+root.insert(11)
+root.insert(7)
+# print(root.value)
+# print(root.right.value)
+# print(root.left.value)
+# print(root.left.left.value)
+# root.print_tree()
+# print(root.get_max())
+print(root.contains(13))
 
 
 # should have methods insert, contains, get_max
