@@ -144,11 +144,26 @@ class DoublyLinkedList:
 
     def delete(self, node):
         # if dll is empty return none
-        if self.head == None or self.tail == None:
+        if not self.head and not self.tail:
             return None
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
         # instantiate current node
-        current_node = node
-        current_node.delete()
+        # check if the given node is the head,
+        if self.head == node:
+            # set the self.head pointer to the next node, delete node
+        self.head == node.next
+        node.delete()
+        # check if the given node is the tail
+        if self.tail == node:
+            # set the self.tail pointer to the previous node, delete node
+        self.tail = node.prev
+        node.delete()
+        # otherwise, the node we are looking to delete is in the middle of list
+        # call node.delete
+        else:
+            node.delete()
 
     def get_max(self):
         if self.head == None:
