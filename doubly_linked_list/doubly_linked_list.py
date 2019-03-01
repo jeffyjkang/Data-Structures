@@ -58,8 +58,8 @@ class DoublyLinkedList:
         # default of new_node next and prev are already set to None, no need to alter
         # if head exists, set self.head.prev to new node
         if self.head is not None:
-            self.head.prev = new_node
             new_node.next = self.head
+            self.head.prev = new_node
             # move head to point to new node
             self.head = new_node
 
@@ -85,8 +85,8 @@ class DoublyLinkedList:
         # default of new_node next and prev are already set to None, no need to alter
         # if tail exists, set self.tail.next to new node
         if self.tail is not None:
-            self.tail.next = new_node
             new_node.prev = self.tail
+            self.tail.next = new_node
             # move tail to point to new node
             self.tail = new_node
 

@@ -86,9 +86,9 @@ class Heap:
         # we must initialize the largest placeholder with the current index
         largest = index
         # if the value at left or right is larget than the current index reassign largest
-        if self.storage[largest] < self.storage[left]:
+        if len(self.storage) > self.storage[largest] < self.storage[left]:
             largest = left
-        if self.storage[largest] < self.storage[right]:
+        if len(self.storage) > self.storage[largest] < self.storage[right]:
             largest = right
         # if the largest is now not the original index, swap and recursively call sift down
         # until the largest is at the index
